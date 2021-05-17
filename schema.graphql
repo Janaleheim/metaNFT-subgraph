@@ -1,6 +1,6 @@
-type ExampleEntity @entity {
+type MtNFT @entity {
   id: ID!
-  count: BigInt!
+  url: String
   owner: Bytes! # address
-  approved: Bytes! # address
+  approved: Bytes # address
 }

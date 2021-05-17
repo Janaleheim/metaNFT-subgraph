@@ -1,10 +1,10 @@
 # metaNFT-subgraph
 MetaNFT demo
 
-yarn install
+npm install
 
-yarn codegen
+graph codegen
 
-yarn build
+graph build
 
-yarn deploy
+graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ erhenglu/MetaNFT
