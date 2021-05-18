@@ -14,7 +14,7 @@ import {
   Transfer,
   Unpaused
 } from "../generated/MetaverseNFT/MetaverseNFT"
-import { MtNFT } from "../generated/schema"
+import { MtNFT, MtTransfer } from "../generated/schema"
 
 export function handleApproval(event: Approval): void {
 }
@@ -41,9 +41,14 @@ export function handleSetMintFeeAmount(event: SetMintFeeAmount): void {}
 
 export function handleTransfer(event: Transfer): void {
 
+  let transfer = new MtTransfer(event.transaction.hash.toHex())
+  transfer.from  = event.params.from
+  transfer.to  = event.params.to
+  transfer.tokenId = event.params.tokenId.toHexString()
+  transfer.save()
   // Entities only exist after they have been saved to the store;
   // `null` checks allow to create entities on demand
-  if (event.params.from.toHex() == "0x0000000000000000000000000000000000000000000000000000000000000000") {
+  if (event.params.from.toHexString() == "0x0000000000000000000000000000000000000000") {
     let entity = new MtNFT(event.params.tokenId.toHex())
 
     // Entity fields can be set using simple assignments

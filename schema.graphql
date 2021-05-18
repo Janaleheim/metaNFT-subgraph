@@ -4,3 +4,10 @@ type MtNFT @entity {
   owner: Bytes! # address
   approved: Bytes # address
 }
+
+type MtTransfer @entity {
+  id: ID!
+  tokenId: String!
+  from: Bytes! # address
+  to: Bytes! # address
+}
